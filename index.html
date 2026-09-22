@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Marcus Mário — Analista de Dados</title>
+<meta name="description" content="Portfólio de Marcus Mário, Analista de Dados.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="tunnel-fx" id="tunnelFx"></div>
+
+<nav>
+  <div class="brand">
+    <span class="dot"></span>
+    <span class="path"></span><span class="who">Marcus.Data</span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#inicio" class="nav-link" data-target="inicio"><span class="caret"></span><span class="full">inicio</span></a>
+    <a href="#sobre" class="nav-link" data-target="sobre"><span class="caret"></span><span class="full">sobre</span></a>
+    <a href="#projetos" class="nav-link" data-target="projetos"><span class="caret"></span><span class="full">projetos</span></a>
+    <a href="#contato" class="nav-link" data-target="contato"><span class="caret"></span><span class="full">contato</span></a>
+  </div>
+  <div class="nav-progress" id="navProgress">
+    <div class="seg" data-seg="0"></div>
+    <div class="seg" data-seg="1"></div>
+    <div class="seg" data-seg="2"></div>
+    <div class="seg" data-seg="3"></div>
+  </div>
+</nav>
+
+<div class="stage">
+
+  <section class="view active" id="inicio">
+    <div class="wrap">
+      <div class="hero-kicker"><span class="status-dot"></span>disponível para novos projetos</div>
+      <h1 class="hero-name" id="heroName"></h1>
+      <p class="hero-role">Analista de Dados</p>
+      <p class="hero-line">Como Analista de Dados, meu foco é transformar informações complexas em soluções estratégicas e automatizadas, entregando resultados diretos para a tomada de decisão.</p>
+      <div class="hero-actions">
+        <a href="#projetos" class="btn btn-primary nav-link" data-target="projetos">ver projetos →</a>
+        <a href="#contato" class="btn btn-ghost nav-link" data-target="contato">entrar em contato</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>role ou use as setas</span>
+      <span class="arrow">↓</span>
+    </div>
+  </section>
+
+  <section class="view" id="sobre">
+    <div class="wrap">
+      <div class="eyebrow">sobre</div>
+      <h2 class="section-title">Analise que trasforma sua decisão</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Sou estudante de <strong>Análise e Desenvolvimento de Sistemas</strong>,Atuo como analista de Dados Júnior com experiência em BI, SQL, Power BI, Python e automação de processos, transformando bases brutas em indicadores para vendas, CRM e eficiência operacional. Atuo na criação de dashboards, estruturação de dados e suporte à decisões executivas. </p>
+          <div class="stat-row">
+            <div class="stat"><div class="num">10+</div><div class="label">dashboards construídos</div></div>
+            <div class="stat"><div class="num">100%</div><div class="label">foco em analises</div></div>
+            <div class="stat"><div class="num">ADS</div><div class="label">curso em andamento</div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <span class="tld r"></span><span class="tld y"></span><span class="tld g"></span>
+            <span class="file">skills</span>
+          </div>
+          <div class="panel-body">
+            <div class="stack-title">// Ferramentas &amp; tecnologias</div>
+            <div class="badges">
+              <span class="badge"><span class="sw" style="background:#3776AB"></span>Python</span>
+              <span class="badge"><span class="sw" style="background:#4479A1"></span>SQL</span>
+              <span class="badge"><span class="sw" style="background:#F7DF1E"></span>Power BI</span>
+              <span class="badge"><span class="sw" style="background:#38f032"></span>Excel</span>
+              <span class="badge"><span class="sw" style="background:#c82c11"></span>HTML</span>
+            </div>
+            <div class="stack-title">// sistemas &amp; integração</div>
+            <div class="badges">
+              <span class="badge"><span class="sw" style="background:#f1780f"></span>Claude</span>
+              <span class="badge"><span class="sw" style="background:#8891A3"></span>Bancos de Dados</span>
+              <span class="badge"><span class="sw" style="background:#E8A33D"></span>Automação de Processos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="projetos">
+    <div class="wrap">
+      <div class="eyebrow">projetos</div>
+      <h2 class="section-title">Acompanhe meus projetos.</h2>
+      <div class="proj-grid">
+
+        <article class="proj-card">
+          <div class="proj-window">
+            <span class="tld" style="background:#c82c11"></span>
+            <span class="tld" style="background:#F7DF1E"></span>
+            <span class="tld" style="background:#38f032"></span>
+            <span class="fname">Analise Comercial</span>
+          </div>
+          <div class="proj-body">
+            <span class="proj-tag">Tech.Store</span>
+            <h3>Analise de vendas empresa Tech Store</h3>
+            <p>Análise de vendas de produtos no mês de maio para identificação de parâmetro e métricas. </p>
+            <div class="proj-stack"><span>HTML</span><span>Power BI</span><span>Excel</span></div>
+            <a href=" https://marcusmario603-png.github.io/Analise-de-vendas-TechStore" target="_blank" rel="noopener" class="clink">
+            <span class="proj-link">dash Tech.Store <span class="arrow">→</span></span>
+            </a>
+          </div>
+        </article>
+
+        <article class="proj-card">
+          <div class="proj-window">
+            <span class="tld" style="background:#c82c11"></span>
+            <span class="tld" style="background:#E8C33D"></span>
+            <span class="tld" style="background:#4ADE80"></span>
+            <span class="fname">R12 mês a mês</span>
+          </div>
+          <div class="proj-body">
+            <span class="proj-tag">Garantia e Proteção</span>
+            <h3>Analise financeira</h3>
+            <p>Comparativo financeiro anos 2023 e 2024 GeP</p>
+            <div class="proj-stack"><span>HTML</span><span>Excel</span></div>
+            <a href=" https://marcusmario603-png.github.io/Dashboard-Garantia-e-protecao/" target="_blank" rel="noopener" class="clink">
+              <span class="proj-link">dash GeP <span class="arrow">→</span></span>
+             </a>
+          </div>
+        </article>
+
+        <article class="proj-card">
+          <div class="proj-window">
+            <span class="tld" style="background:#E85D5D"></span>
+            <span class="tld" style="background:#E8C33D"></span>
+            <span class="tld" style="background:#4ADE80"></span>
+            <span class="fname">Analise de vendas 2026</span>
+          </div>
+          <div class="proj-body">
+            <span class="proj-tag">F1 Motors</span>
+            <h3>Sistema de analise comercial</h3>
+            <p>Análise comercial de vendas Sul Fluminense por cidade no ano de 2026.</p>
+            <div class="proj-stack"><span>Claude</span><span>Power BI</span><span>Logs</span></div>
+            <a href="  https://marcusmario603-png.github.io/F1-Motors/" target="_blank" rel="noopener" class="clink">
+              <span class="proj-link">Dash F1 Motors <span class="arrow">→</span></span>
+            </a>
+          </div>
+        </article>
+
+      
+  </section>
+
+  <section class="view" id="contato">
+    <div class="wrap">
+      <div class="eyebrow">contato</div>
+      <h2 class="section-title">Vamos conversar sobre o seu próximo projeto.</h2>
+      <div class="contact-grid">
+        
+
+        <div class="contact-side panel">
+          <div class="panel-head">
+            <span class="tld r"></span><span class="tld y"></span><span class="tld g"></span>
+            <span class="file">contatos</span>
+          </div>
+          <div class="panel-body">
+            <a href="mailto:marcusmario603@gmail.com" class="clink">
+              <span><span class="label">e-mail&nbsp; </span>marcusmario603@gmail.com</span>
+              <span class="arrow">→</span>
+            </a>
+            <a href="https://linkedin.com/in/marcus-mario" target="_blank" rel="noopener" class="clink">
+              <span><span class="label">linkedin&nbsp; </span>/in/marcus-mario</span>
+              <span class="arrow">→</span>
+            </a>
+            <a href="https://github.com/marcusmario603-png" target="_blank" rel="noopener" class="clink">
+              <span><span class="label">github&nbsp; </span>marcusmario603-png</span>
+              <span class="arrow">→</span>
+            </a>
+            <a href="https://wa.me/5524999939106" target="_blank" rel="noopener" class="clink">
+              <span><span class="label">whatsapp&nbsp; </span>2499993-9106</span>
+              <span class="arrow">→</span>
+            </a>
+          </div>
+          <div class="panel-body" style="padding-top:0;">
+            <div class="contact-avail"><span class="status-dot" style="width:8px;height:8px;border-radius:50%;background:#4ADE80;"></span>respondo em até 24h</div>
+          </div>
+        </div>
+      </div>
+      <footer class="mini">Marcus Mário — Analista de Dados</footer>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
