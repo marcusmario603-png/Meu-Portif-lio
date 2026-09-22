@@ -9,6 +9,10 @@
   var segEls = Array.prototype.slice.call(document.querySelectorAll('.nav-progress .seg'));
   var tunnelFx = document.getElementById('tunnelFx');
 
+  function isMobileViewport(){
+    return window.matchMedia('(max-width: 680px)').matches;
+  }
+
   function clearStates(el){
     el.classList.remove('active', 'state-behind', 'state-front');
   }
@@ -84,17 +88,19 @@
   function next(){ goTo(current + 1); }
   function prev(){ goTo(current - 1); }
 
-  // Wheel navigation
+  // Wheel navigation (desktop only)
   var wheelAccum = 0;
   window.addEventListener('wheel', function(e){
+    if(isMobileViewport()) return;
     e.preventDefault();
     if(isAnimating) return;
     if(Math.abs(e.deltaY) < 8) return;
     if(e.deltaY > 0) next(); else prev();
   }, { passive:false });
 
-  // Keyboard navigation
+  // Keyboard navigation (desktop only)
   window.addEventListener('keydown', function(e){
+    if(isMobileViewport()) return;
     var tag = (document.activeElement && document.activeElement.tagName) || '';
     if(tag === 'INPUT' || tag === 'TEXTAREA') return;
 
@@ -107,12 +113,14 @@
     }
   }, { passive:false });
 
-  // Touch navigation (mobile swipe)
+  // Touch navigation (mobile swipe) — only on desktop keeps swipe/scroll navigation
   var touchStartY = null;
   window.addEventListener('touchstart', function(e){
+    if(isMobileViewport()) return;
     touchStartY = e.touches[0].clientY;
   }, { passive:true });
   window.addEventListener('touchend', function(e){
+    if(isMobileViewport()) return;
     if(touchStartY === null) return;
     var dy = touchStartY - e.changedTouches[0].clientY;
     touchStartY = null;
@@ -156,41 +164,57 @@
   var status = document.getElementById('formStatus');
   var submitBtn = document.getElementById('formSubmitBtn');
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
 
-    var endpoint = form.getAttribute('action') || '';
-    if(!endpoint || endpoint.indexOf('SEU_ID_AQUI') > -1){
-      status.textContent = 'formulário ainda não configurado — defina o endpoint do Formspree.';
-      status.classList.add('show');
-      return;
-    }
-
-    var originalLabel = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'enviando...';
-    status.textContent = '';
-    status.classList.remove('show');
-
-    fetch(endpoint, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(function(response){
-      if(response.ok){
-        status.textContent = 'mensagem enviada com sucesso — obrigado pelo contato!';
-        form.reset();
-      } else {
-        status.textContent = 'não foi possível enviar agora — tente novamente em instantes.';
+      var endpoint = form.getAttribute('action') || '';
+      if(!endpoint || endpoint.indexOf('SEU_ID_AQUI') > -1){
+        if(status){
+          status.textContent = 'formulário ainda não configurado — defina o endpoint do Formspree.';
+          status.classList.add('show');
+        }
+        return;
       }
-      status.classList.add('show');
-    }).catch(function(){
-      status.textContent = 'falha de conexão — verifique sua internet e tente novamente.';
-      status.classList.add('show');
-    }).finally(function(){
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalLabel;
-      setTimeout(function(){ status.classList.remove('show'); }, 5000);
+
+      if(submitBtn){
+        var originalLabel = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'enviando...';
+      }
+      if(status){
+        status.textContent = '';
+        status.classList.remove('show');
+      }
+
+      fetch(endpoint, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(response){
+        if(status){
+          if(response.ok){
+            status.textContent = 'mensagem enviada com sucesso — obrigado pelo contato!';
+            form.reset();
+          } else {
+            status.textContent = 'não foi possível enviar agora — tente novamente em instantes.';
+          }
+          status.classList.add('show');
+        }
+      }).catch(function(){
+        if(status){
+          status.textContent = 'falha de conexão — verifique sua internet e tente novamente.';
+          status.classList.add('show');
+        }
+      }).finally(function(){
+        if(submitBtn){
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+        if(status){
+          setTimeout(function(){ status.classList.remove('show'); }, 5000);
+        }
+      });
     });
-  });
+  }
 })();
